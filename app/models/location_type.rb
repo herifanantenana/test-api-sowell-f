@@ -8,5 +8,4 @@ class LocationType < ApplicationRecord
 
   enum :nature, { common_areas: 0, housing: 1, other_spots: 2, zone: 2 }
 
-  validates :base_location_type, presence: true
 end
