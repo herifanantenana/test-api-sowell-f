@@ -4,7 +4,8 @@ module IssueTypeValidatable
   extend ActiveSupport::Concern
 
   included do
-    validates :name, presence: { message: I18n.t("validations.common.name_presence") }
+    validates :name, presence: { message: I18n.t("validations.common.name_presence") }, length: {minimum:3, maximum:3}
+    validate :base_location_type_should_same
     validate :location_type_should_belong_to_company
   end
 
@@ -12,6 +13,12 @@ module IssueTypeValidatable
     if location_type&.company_id != company_id
       errors.add(:location_type,
                  I18n.t("validations.common.belonging_to_company"))
+    end
+  end
+
+  def base_location_type_should_same
+    if base_issue_type.nil? || location_type.nil? || base_issue_type.base_location_type != location_type.base_location_type
+      errors.add(:base_location_type, I18n.t("validations.common.base_location_type_should_same"))
     end
   end
 end

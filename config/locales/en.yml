@@ -55,6 +55,7 @@ en:
       recurrence_presence: "Recurrence is required"
       recurrence_absence: "Recurrence can't be filled"
       belonging_to_company: "Should belong to company"
+      base_location_type_should_same: "Base location type of location type and base of issue type are not equal"
     checkpoint:
       question_presence: "Question is required"
       incompatible_issue_type_and_checklist: "must be set with issue_type and checklist from same company"

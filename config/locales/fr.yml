@@ -24,6 +24,7 @@ en:
       recurrence_presence: "Le champ recurrence est requis"
       recurrence_absence: "Le champ recurrence doit être absent"
       belonging_to_company: "Doit appartenir à la même company"
+      base_location_type_should_same: "La type location de base de la type location et de la base du type de probleme ne sont pas égales"
     checkpoint:
       question_presence: "Le champ question est requis"
       incompatible_issue_type_and_checklist: "doit être défini avec un issue_type et une checklist d'une même company"
