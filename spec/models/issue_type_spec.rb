@@ -55,6 +55,7 @@ RSpec.describe IssueType, type: :model do
       it "is the same base_location_type" do
         expect(issue_type.base_issue_type.base_location_type).to eq(base_location_type)
         expect(issue_type.location_type.base_location_type).to eq(base_location_type)
+        expect(issue_type.base_issue_type.base_location_type == issue_type.location_type.base_location_type).to be_truthy
       end
 
       let(:other_base_location_type) { create(:base_location_type) }
