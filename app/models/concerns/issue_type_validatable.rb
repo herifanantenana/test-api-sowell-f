@@ -4,7 +4,7 @@ module IssueTypeValidatable
   extend ActiveSupport::Concern
 
   included do
-    validates :name, presence: { message: I18n.t("validations.common.name_presence") }, length: {minimum:3, maximum:3}
+    validates :name, presence: { message: I18n.t("validations.common.name_presence") }
     validate :base_location_type_should_same
     validate :location_type_should_belong_to_company
   end

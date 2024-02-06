@@ -4,5 +4,6 @@ FactoryBot.define do
     logo_url { "MyString" }
     company { association :company }
     nature { 0 }
+    base_location_type { association :base_location_type }
   end
 end
