@@ -9,6 +9,6 @@ module VisitScheduleObserver
   private
 
   def touch_place
-    place.touch
+    place&.touch
   end
 end

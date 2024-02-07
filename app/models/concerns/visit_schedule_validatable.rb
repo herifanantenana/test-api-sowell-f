@@ -23,9 +23,9 @@ module VisitScheduleValidatable
   end
 
   def should_have_only_one_of_place_or_residence_or_spot
-    if [place, residence, spot].one?
+    unless [place, residence, spot].one?
       [:place, :residence, :spot].each do |symbol_location|
-        errors.add(symbol_location, I18n.t("validations.visit_schedule.should_have_only_one_of_place_or_residence_or_spot")) if [place, residence, spot].one?
+        errors.add(symbol_location, I18n.t("validations.visit_schedule.should_have_only_one_of_place_or_residence_or_spot"))
       end
     end
   end
