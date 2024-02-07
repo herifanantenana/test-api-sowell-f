@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_112018) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_06_104939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_112018) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_agencies_on_company_id"
+  end
+
+  create_table "base_issue_types", force: :cascade do |t|
+    t.string "name"
+    t.bigint "base_location_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["base_location_type_id"], name: "index_base_issue_types_on_base_location_type_id"
+  end
+
+  create_table "base_location_types", force: :cascade do |t|
+    t.string "name"
+    t.integer "depth_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "checklists", force: :cascade do |t|
@@ -90,6 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_112018) do
     t.bigint "location_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "base_issue_type_id", null: false
+    t.index ["base_issue_type_id"], name: "index_issue_types_on_base_issue_type_id"
     t.index ["company_id"], name: "index_issue_types_on_company_id"
     t.index ["location_type_id"], name: "index_issue_types_on_location_type_id"
   end
@@ -101,6 +118,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_112018) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "nature", default: 0, null: false
+    t.bigint "base_location_type_id", null: false
+    t.index ["base_location_type_id"], name: "index_location_types_on_base_location_type_id"
     t.index ["company_id"], name: "index_location_types_on_company_id"
   end
 
@@ -218,6 +237,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_112018) do
   end
 
   add_foreign_key "agencies", "companies"
+  add_foreign_key "base_issue_types", "base_location_types"
   add_foreign_key "checklists", "companies"
   add_foreign_key "checklists", "location_types"
   add_foreign_key "checkpoints", "checklists"
@@ -229,8 +249,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_112018) do
   add_foreign_key "issue_reports", "spots"
   add_foreign_key "issue_reports", "users", column: "author_id"
   add_foreign_key "issue_reports", "visit_reports"
+  add_foreign_key "issue_types", "base_issue_types"
   add_foreign_key "issue_types", "companies"
   add_foreign_key "issue_types", "location_types"
+  add_foreign_key "location_types", "base_location_types"
   add_foreign_key "location_types", "companies"
   add_foreign_key "places", "companies"
   add_foreign_key "places", "residences"
