@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :base_location_type do
-    name { "Paris" }
-    depth_level { 2 }
+    name { Faker::Name.initials }
+    depth_level { rand(1..3) }
   end
 end

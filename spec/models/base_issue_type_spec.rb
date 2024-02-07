@@ -33,9 +33,5 @@ RSpec.describe BaseIssueType, type: :model do
         base_issue_type.save!
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
-    it "is the correct base_location_type" do
-      expect(base_issue_type.base_location_type.name).not_to eq("Canada")
-      expect(base_issue_type.base_location_type.name).to eq("Paris") # we define this name "Paris" in the factory of the base_location_type
-    end
   end
 end
