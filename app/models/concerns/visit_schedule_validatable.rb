@@ -6,6 +6,8 @@ module VisitScheduleValidatable
     validates :due_at, absence: true, unless: -> { checklist&.is_planned }
     validate :cant_set_invalid_due_at, on: :update, unless: -> { skip_due_at_validation || !checklist&.is_planned }
     validate :cant_set_incompatible_place_and_checklist
+    validate :should_have_only_one_of_place_or_residence_or_spot
+    validate :the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively
   end
 
   private
@@ -20,31 +22,21 @@ module VisitScheduleValidatable
     end
   end
 
-  def should_not_have_place_and_residence_and_spot_at_the_same_record
-    if !place.nil? && !residence.nil? && !spot.nil?
-      errors.add(:place, I18n.t("validations.visit_schedule.should_not_have_place_and_residence_and_spot_at_the_same_record"))
-      errors.add(:residence, I18n.t("validations.visit_schedule.should_not_have_place_and_residence_and_spot_at_the_same_record"))
-      errors.add(:spot, I18n.t("validations.visit_schedule.should_not_have_place_and_residence_and_spot_at_the_same_record"))
-    end
-  end
-
   def should_have_only_one_of_place_or_residence_or_spot
-    all_are_nil = place.nil? && residence.nil? && spot.nil?
-    two_has_value = ( !place.nil? && !residence.nil? ) || ( !place.nil? && !spot.nil? ) || ( !residence.nil? && !spot.nil? )
-    if all_are_nil || two_has_value
-      errors.add(:place, I18n.t("validations.visit_schedule.should_have_only_one_of_place_or_residence_or_spot"))
-      errors.add(:residence, I18n.t("validations.visit_schedule.should_have_only_one_of_place_or_residence_or_spot"))
-      errors.add(:spot, I18n.t("validations.visit_schedule.should_have_only_one_of_place_or_residence_or_spot"))
+    if [place, residence, spot].one?
+      [:place, :residence, :spot].each do |symbol_location|
+        errors.add(symbol_location, I18n.t("validations.visit_schedule.should_have_only_one_of_place_or_residence_or_spot")) if [place, residence, spot].one?
+      end
     end
   end
 
   def the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively
     existing_of = place || residence || spot
-    if existing_of.nil? || checklist&.location_type&.base_location_type.depth_level.downcase == existing_of.class.name.downcase
-      errors.add(:place, I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively")) if existing_of == place
-      errors.add(:residence, I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively")) if existing_of == residence
-      errors.add(:spot, I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively")) if existing_of == spot
-      errors.add(:checklist, I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively"))
+    if existing_of.nil? || checklist&.location_type&.base_location_type.depth_level.downcase != existing_of.class.name.downcase
+      [:place, :residence, :spot].each do |symbol_location|
+        error_message = I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_to.#{symbol_location.to_s}")
+        errors.add(symbol_location, error_message) if existing_of.class.name.downcase == symbol_location.to_s
+      end
     end
   end
 end
