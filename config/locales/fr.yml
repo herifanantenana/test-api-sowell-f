@@ -46,6 +46,7 @@ en:
       incompatible_place_and_checklist: "doit être défini avec la place et le checklist de la même company"
       should_not_have_place_and_residence_and_spot_at_the_same_record: "ne doit pas avoir de place, de résidence et de spot dans le même enregistrement"
       should_have_only_one_of_place_or_residence_or_spot: "ne doit avoir qu'une seule des valeurs place, residence ou spot"
+      the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively: "le niveau de profondeur du type de localisation dans le checklist doit correspondre à l'une des valeurs place, residence ou spot respectivement"
     visit_report:
       checkpoints_not_complete: "doivent tous avoir été répondus"
       invalid_checkpoint_status: "doivent être ok, ko ou non-concerné"

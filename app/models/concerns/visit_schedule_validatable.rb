@@ -37,4 +37,14 @@ module VisitScheduleValidatable
       errors.add(:spot, I18n.t("validations.visit_schedule.should_have_only_one_of_place_or_residence_or_spot"))
     end
   end
+
+  def the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively
+    existing_of = place || residence || spot
+    if existing_of.nil? || checklist&.location_type&.base_location_type.depth_level.downcase == existing_of.class.name.downcase
+      errors.add(:place, I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively"))
+      errors.add(:residence, I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively"))
+      errors.add(:spot, I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively"))
+      errors.add(:checklist, I18n.t("validations.visit_schedule.the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively"))
+    end
+  end
 end

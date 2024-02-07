@@ -77,6 +77,7 @@ en:
       incompatible_place_and_checklist: "must be set with place and checklist from same company"
       should_not_have_place_and_residence_and_spot_at_the_same_record: "should not have place and residence and spot at the same record"
       should_have_only_one_of_place_or_residence_or_spot: "should have only one of place, residence or spot"
+      the_depth_level_of_location_type_in_checklist_should_correspond_one_of_place_or_residence_or_spot_respectively: "the depth level of location type in checklist should correspond one of place or residence or spot respectively"
     visit_report:
       checkpoints_not_complete: "should all be checked"
       invalid_checkpoint_status: "should be either ok, ko or missing"
