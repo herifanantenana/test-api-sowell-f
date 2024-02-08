@@ -44,6 +44,16 @@ en:
     visit_schedule:
       invalide_due_at: "doit être fixé avec une date d'échéance sur le futur"
       incompatible_place_and_checklist: "doit être défini avec la place et le checklist de la même company"
+      should_not_have_place_and_residence_and_spot_at_the_same_record: "ne doit pas avoir de place, de résidence et de spot dans le même enregistrement"
+      should_have_only_one_of_place_or_residence_or_spot: "ne doit avoir qu'une seule des valeurs place, residence ou spot"
+      multiple_location_one_already_set:
+        residence: "la résidence est déjà définie"
+        place: "la place est déjà définie"
+        spot: "le spot est déjà défini"
+      the_depth_level_of_location_type_in_checklist_should_correspond_to:
+        place: "le niveau de profondeur de la type location dans le checklist doit correspondre à la place"
+        residence: "le niveau de profondeur de la type location dans le checklist doit correspondre à la résidence"
+        spot: "le niveau de profondeur de la type location dans le checklist doit correspondre au spot"
     visit_report:
       checkpoints_not_complete: "doivent tous avoir été répondus"
       invalid_checkpoint_status: "doivent être ok, ko ou non-concerné"
