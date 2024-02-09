@@ -6,6 +6,7 @@ class Place < ApplicationRecord
   belongs_to :residence
 
   has_many :visit_schedules, dependent: :destroy
+  hes_many :visit_props, dependent: :destroy
   has_many :spots, dependent: :destroy
   has_and_belongs_to_many :sectors, class_name: "Sector", join_table: "places_sectors"
 

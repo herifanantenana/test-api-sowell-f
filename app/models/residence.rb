@@ -7,6 +7,7 @@ class Residence < ApplicationRecord
 
   has_many :places, dependent: :destroy
   has_many :visit_schedules, through: :places
+  has_many :visit_props, through: :places
 
   scope :by_user_role, lambda { |role_name, users_ids|
     joins(places: { sectors: { roles: :user } }).where(user: { id: users_ids.map(&:to_i) }, roles: { name: role_name.to_sym }).distinct
