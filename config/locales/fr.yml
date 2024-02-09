@@ -27,6 +27,9 @@ en:
     checkpoint:
       question_presence: "Le champ question est requis"
       incompatible_issue_type_and_checklist: "doit être défini avec un issue_type et une checklist d'une même company"
+    export:
+      url_only_when_export_is_done: "doit être présent uniquement lorsque l'export est terminé"
+      must_have_name: "doit avoir un nom"
     issue_report:
       housing_type_has_spot: "doit être défini si la localisation est de nature 'housing' (logement)"
       spot_and_place_are_related: "doit être au sein de la place liée au signalement"
