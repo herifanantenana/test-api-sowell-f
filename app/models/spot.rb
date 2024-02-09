@@ -6,4 +6,5 @@ class Spot < ApplicationRecord
   belongs_to :location_type
 
   has_many :visit_schedules, dependent: :destroy
+  has_many :visit_props, dependent: :destroy
 end
