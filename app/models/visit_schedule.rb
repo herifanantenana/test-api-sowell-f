@@ -1,6 +1,7 @@
 class VisitSchedule < ApplicationRecord
   include VisitScheduleValidatable
   include VisitScheduleObserver
+  include VisitValidatable
 
   belongs_to :place, optional: true
   belongs_to :checklist

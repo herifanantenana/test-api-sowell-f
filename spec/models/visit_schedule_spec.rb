@@ -137,7 +137,7 @@ RSpec.describe VisitSchedule, type: :model do
 
   end
 
-  describe "#the depth level of location type in checklist" do
+  describe "#the depth level of base location type relative to the checklist" do
     [
       { depth_level: 1, symbol_location: :residence },
       { depth_level: 2, symbol_location: :place },
