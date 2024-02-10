@@ -8,13 +8,13 @@ class ExportController < ApplicationController
 
   # GET /exports/1
   def show
-    ExportResource.new.authorize_from_resource_proxy(:read, @export)
+    Export.new.authorize_from_resource_proxy(:read, @export)
     render jsonapi: @export
   end
 
   # POST /exports
   def create
-    @export = ExportResource.new(export_params.merge({status: 0, url:nil, author: current_user}))
+    @export = Export.new(export_params.merge({status: 0, url:nil, author: current_user}))
     if @export.save
       render jsonapi: @export, status: :created
     else

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Export, type: :model do
   let(:export) { create(:export) }
-  describe "#defaulr export" do
+  describe "#default export" do
     it "is valid" do
       expect(export).to be_valid
     end
