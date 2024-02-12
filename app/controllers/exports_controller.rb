@@ -14,7 +14,7 @@ class ExportController < ApplicationController
 
   # POST /exports
   def create
-    @export = Export.new(export_params.merge({status: 0, url:nil, author: current_user}))
+    @export = ExportResource.build(export_params)
     if @export.save
       render jsonapi: @export, status: :created
     else
