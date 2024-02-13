@@ -30,6 +30,8 @@ en:
     export:
       url_only_when_export_is_done: "doit être présent uniquement lorsque l'export est terminé"
       must_have_name: "doit avoir un nom"
+      name_should_correspond_to_data_model_in_params: "le nom doit correspondre au modèle de données dans les paramètres"
+      data_model_in_params_should_correspond_to_model_name: "le modèle de données dans les paramètres doit correspondre au nom du modèle"
     issue_report:
       housing_type_has_spot: "doit être défini si la localisation est de nature 'housing' (logement)"
       spot_and_place_are_related: "doit être au sein de la place liée au signalement"

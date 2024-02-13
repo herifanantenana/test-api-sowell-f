@@ -1,4 +1,4 @@
-class ExportController < ApplicationController
+class ExportsController < ApplicationController
 
   # GET /exports
   def index
