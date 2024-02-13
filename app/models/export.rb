@@ -1,5 +1,6 @@
 class Export < ApplicationRecord
   include ExportValidatable
+  include ExportObservable
 
   belongs_to :author, class_name: "User"
 

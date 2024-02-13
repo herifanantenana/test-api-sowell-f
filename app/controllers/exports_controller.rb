@@ -20,9 +20,17 @@ class ExportsController < ApplicationController
     else
       render jsonapi: @export.errors, status: :unprocessable_entity
     end
-
   end
 
+  def update
+    Export.new.authorize_from_resource_proxy(:update, @export)
+    if @export.update(export_params)
+      render jsonapi: @export
+    else
+      render jsonapi: @export.errors, status: :unprocessable_entity
+    end
+  end
+  
   private
   def export_params
     params.require(:export).permit(:name, :status, :url, :params, :author)

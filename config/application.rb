@@ -46,5 +46,6 @@ module API
     end
 
     config.autoload_paths << "#{Rails.root}/app/models/observers"
+    config.active_job.queue_adapter = :sidekiq
   end
 end
