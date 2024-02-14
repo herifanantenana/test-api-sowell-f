@@ -261,6 +261,8 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.5-x86_64-linux)
+      racc (~> 1.4)
     oj (3.16.3)
       bigdecimal (>= 3.0)
     parallel (1.24.0)
@@ -392,6 +394,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   aws-sdk-s3
