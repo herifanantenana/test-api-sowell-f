@@ -1,4 +1,4 @@
-module ExportObservable
+module ExportObserver
   extend ActiveSupport::Concern
 
   included do

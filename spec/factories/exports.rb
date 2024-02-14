@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :export do
-    name { Faker::Name.initials }
+    name { Faker::Name.name }
     url { Faker::Internet.url }
     status { 2 }
     params { { "key" => "value" } }
