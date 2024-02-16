@@ -57,6 +57,8 @@ group :development, :test do
   gem "jsonapi-rspec"
   # For seeding and creating fake data
   gem "faker"
+
+  gem 'httparty'
 end
 
 group :test do
@@ -68,7 +70,7 @@ group :test do
   # Lets you name your tests and group them together using English.
   gem "shoulda-context"
   # Cucumber for test
-  gem "cucumber-rails"
+  gem "cucumber-rails", require: false
 end
 
 group :development do
