@@ -13,4 +13,5 @@ class UserResource < ApplicationResource
 
   belongs_to :company
   has_many :issue_reports, foreign_key: :author_id
+  has_many :export, foreign_key: :author_id
 end

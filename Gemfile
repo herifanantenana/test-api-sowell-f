@@ -38,6 +38,8 @@ gem "spreadsheet"
 # For communication with AWS-S3 compatible services
 gem "aws-sdk-s3", require: false
 
+gem "sidekiq"
+
 group :development, :test do
   # Fast implementation of the standard debugger
   gem "debase"
@@ -68,7 +70,7 @@ group :test do
   # Lets you name your tests and group them together using English.
   gem "shoulda-context"
   # Cucumber for test
-  gem "cucumber-rails"
+  gem "cucumber-rails", require: false
 end
 
 group :development do
